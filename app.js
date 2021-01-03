@@ -3,22 +3,62 @@
 //   .then(data => console.log(data))
 //   .catch(err => console.error(err));
 
+const loadingIndicator = document.getElementById('loadingIndicator');
+const shortenedUrlResult = document.getElementById('shortenedUrlResult');
+
+async function postLongUrl(postData){  
+  try{
+    const response = await fetch('http://u-bit.me/url', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(postData)
+                    });
+    const data = await response.json();
+    showShortenedUrl(data);
+  } catch(err){
+    loadingIndicator.classList.add('hidden');
+    console.error(err);
+  }
+}
+
+function showShortenedUrl(data){
+  loadingIndicator.classList.add('hidden');
+  shortenedUrlResult.classList.remove('hidden');
+  document.getElementById('shortenedUrl').setAttribute('href', `http://${data.shortenedUrl}`);
+  document.getElementById('shortenedUrl').innerHTML = `${data.shortenedUrl}`;
+  document.getElementById('originalUrl').innerHTML = data.originalUrl;
+}
 
 function shortenUrl(){
+  loadingIndicator.classList.remove('hidden');
+  shortenedUrlResult.classList.add('hidden');
   const url = document.getElementById('longUrl').value;
   const data = {url: url}
-  fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(result => result.json())
-    .then(data => {
-      console.log(data);
-      document.getElementById('shortenedUrl').innerHTML = data;
-    })
-    .catch(err => console.error(err));
-    event.preventDefault();
+  postLongUrl(data);
+  event.preventDefault();
 }  
+
+async function getRecentUrls(){
+  try{
+    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(data)
+                    });
+    const data = await response.json();
+  } catch(err){
+    console.error(err);
+  }
+}
+
+var input = document.getElementById("longUrl");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) { 
+    event.preventDefault();
+    document.getElementById("shortenUrlBtn").click();
+  }
+});
