@@ -34,12 +34,30 @@ function showShortenedUrl(data){
 
 function shortenUrl(){
   loadingIndicator.classList.remove('hidden');
+  document.getElementById('urlHelp').classList.add('hidden');
   shortenedUrlResult.classList.add('hidden');
   const url = document.getElementById('longUrl').value;
+  if(!isUrlValid(url)){
+    document.getElementById('urlHelp').classList.remove('hidden');
+    document.getElementById('longUrl').value = '';
+    document.getElementById('longUrl').focus();
+    loadingIndicator.classList.add('hidden');
+    shortenedUrlResult.classList.remove('hidden');
+    return;
+  }
+
   const data = {url: url}
   postLongUrl(data);
   event.preventDefault();
-}  
+} 
+
+function isUrlValid(str) {
+  var res = str.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&=]*)/g);
+  if(res == null)
+      return false;
+  else
+      return true;
+}
 
 async function getRecentUrls(){
   try{
@@ -56,10 +74,11 @@ async function getRecentUrls(){
   }
 }
 
-var input = document.getElementById("longUrl");
+let input = document.getElementById("longUrl");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) { 
     event.preventDefault();
     document.getElementById("shortenUrlBtn").click();
   }
 });
+
