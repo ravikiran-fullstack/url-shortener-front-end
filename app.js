@@ -29,6 +29,7 @@ function showShortenedUrl(data){
   document.getElementById('shortenedUrl').setAttribute('href', `http://${data.shortenedUrl}`);
   document.getElementById('shortenedUrl').innerHTML = `${data.shortenedUrl}`;
   document.getElementById('originalUrl').innerHTML = data.originalUrl;
+  document.getElementById('longUrl').value = '';
 }
 
 function shortenUrl(){
