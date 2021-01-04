@@ -26,7 +26,7 @@ async function postLongUrl(postData){
 function showShortenedUrl(data){
   loadingIndicator.classList.add('hidden');
   shortenedUrlResult.classList.remove('hidden');
-  document.getElementById('shortenedUrl').setAttribute('href', `rk-url-shortener-back-end.herokuapp.com/${data.shortenedUrl}`);
+  document.getElementById('shortenedUrl').setAttribute('href', `${data.shortenedUrl}`);
   document.getElementById('shortenedUrl').innerHTML = `${data.shortenedUrl}`;
   document.getElementById('originalUrl').innerHTML = data.originalUrl;
   document.getElementById('longUrl').value = '';
