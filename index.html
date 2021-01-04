@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
@@ -23,9 +23,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Recent</a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
@@ -48,12 +48,13 @@
         </form>
       </div>
     </div>
-    <div class="row border" id="shortenedUrlResult">
-      <div class="offset-md-1 col-md-5 ml-10" style="padding:5px;">
-        <a id="shortenedUrl"  href="" target="_blank"></a>
+    <div class="row" id="shortenedUrlResult">
+      <div class="col-md-8 ml-10 text-truncate border" style="padding-top: 10px;">
+        <p id="originalUrl" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 500px;"></p>
       </div>
-      <div class="col-md-6 ml-10 text-truncate">
-        <p id="originalUrl" style="padding:5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 500px;"></p>
+      
+      <div class="col-md-4 ml-10 border" style="padding-top:10px;">
+        <a id="shortenedUrl"  href="" target="_blank"></a>
       </div>
     </div>
     <div class="row hidden" id="loadingIndicator">
