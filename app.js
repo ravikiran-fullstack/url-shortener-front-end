@@ -8,7 +8,7 @@ const shortenedUrlResult = document.getElementById('shortenedUrlResult');
 
 async function postLongUrl(postData){  
   try{
-    const response = await fetch('http://u-bit.me/url', {
+    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ function isUrlValid(str) {
 async function getRecentUrls(){
   try{
     const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
-                      method: 'POST',
+                      method: 'GET',
                       headers: {
                         'Content-Type': 'application/json'
                       },
