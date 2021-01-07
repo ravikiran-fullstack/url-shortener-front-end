@@ -1,46 +1,62 @@
-const userEmailReset = document.getElementById('userEmailReset');
+let username = '';
+let key = ''
+const resetPassword = document.getElementById('userResetPassword');
+const confirmPassword = document.getElementById('userConfirmResetPassword');
 
-async function resetPasswordStep1(resetEmailData){
+window.addEventListener('DOMContentLoaded', (event) => {
+  const queryString = window.location.search;
+  //console.log(queryString);
+  const urlParams = new URLSearchParams(queryString);
+  //console.log(urlParams);
+
+  username = urlParams.get('username')
+  console.log('username',username);
+
+  key = urlParams.get('key')
+  console.log('key',key);
+
+  console.log('DOM fully loaded and parsed');
+});
+
+
+async function resetPasswordStep2(resetPasswordData){
   try{
-    const url = 'http://localhost:8585/resetPasswordWithEmail';
+    const url = 'https://rk-url-shortener-back-end.herokuapp.com/resetPassword';//'http://localhost:8585/resetPassword';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json'
                       },
-                      body: JSON.stringify(resetEmailData)
+                      body: JSON.stringify(resetPasswordData)
                     });
     const data = await response.json();
     validateResetPasswordResponse(data);
   } catch(err){
-    console.log("reset password with email error",err);
+    console.log("reset password error",err);
   }
 }
 
 function validateResetPasswordResponse(data){
-  console.log('validateResetPasswordResponse',data);
-  if(data.message === "User doesn't  exists"){
-    document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
-    document.getElementById('invalidCredentialsHelp').innerHTML = "User doesn't exists, please check user email again";
-  } else {
-    document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
-    document.getElementById('invalidCredentialsHelp').innerHTML = "Check your email for reset options";
-  }
+  console.log('validateResetPasswordResponse', data);
 }
 
-function enterUserEmail(){
-  console.log(userEmailReset.value);
-  document.getElementById('invalidCredentialsHelp').classList.add('hidden');
-  document.getElementById('invalidCredentialsHelp').innerHTML = "";
-  username = userEmailReset.value;
-  const resetEmailData = {
-    username
+
+function resetUserPassword(){
+  if(resetPassword.value !== confirmPassword.value){
+    document.getElementById('passwordMisMatch').classList.remove('hidden');
+    document.getElementById('message').innerHTML = "Passwords do not match";
+    event.preventDefault();
+    return;
   }
-  resetPasswordStep1(resetEmailData);
+
+  const resetPasswordData = {
+    username: username,
+    randomKey: key,
+    password: resetPassword.value,
+    confirmPassword: confirmPassword.value
+  }
+
+  resetPasswordStep2(resetPasswordData);
+
   event.preventDefault();
 }
-
-document.getElementById('userEmailReset').addEventListener('click', () => {
-  document.getElementById('invalidCredentialsHelp').classList.add('hidden');
-  document.getElementById('invalidCredentialsHelp').innerHTML = "";
-})
