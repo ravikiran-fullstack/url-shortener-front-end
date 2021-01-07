@@ -21,7 +21,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 async function resetPasswordStep2(resetPasswordData){
   try{
-    const url = 'https://rk-url-shortener-back-end.herokuapp.com/resetPassword';//'http://localhost:8585/resetPassword';
+    const url = 'https://rk-url-shortener-back-end.herokuapp.com/resetPassword';//
+    //const url = 'http://localhost:8585/resetPassword';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
