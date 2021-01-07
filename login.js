@@ -2,8 +2,8 @@ const usernameLogin = document.getElementById("userEmailLogin");
 const passwordLogin = document.getElementById("userPasswordLogin");
 async function login(loginData){
   try{
-    const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
-    // const url = 'http://localhost:8585/login';
+    //const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
+     const url = 'http://localhost:8585/login';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
@@ -11,6 +11,8 @@ async function login(loginData){
                       },
                       body: JSON.stringify(loginData)
                     });
+    console.log('res', response);
+    console.log('cookies', document.cookie);
     const data = await response.json();
     validateLoginResponse(data);
   } catch(err){
@@ -20,6 +22,7 @@ async function login(loginData){
 
 function validateLoginResponse(data){
   console.log('validateLoginResponse', data);
+
   if(data.message === "Invalid username or password"){
    // usernameLogin.focus();  
    // passwordLogin.focus();
@@ -27,6 +30,9 @@ function validateLoginResponse(data){
     passwordLogin.value = '';
     
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
+  }else {
+    localStorage.setItem('token', data.accessToken);
+    console.log(localStorage);
   }
 }
 
