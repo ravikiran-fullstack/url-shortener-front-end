@@ -30,7 +30,7 @@ function validateLoginResponse(data, status){
   } else if(status === 200){
     localStorage.setItem('token', data.token);
     // console.log(localStorage);
-    localStorage.assign('https://u-bit.me/');
+    location.assign('https://u-bit.me/');
   }
 }
 
