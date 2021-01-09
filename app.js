@@ -81,10 +81,12 @@ function isUrlValid(str) {
 }
 
 function getRecent(){
+  document.getElementById('recentTableBody').innerHTML = '';
   getRecentUrls();
 }
 
 function getRecentAll(){
+  document.getElementById('recentAllTableBody').innerHTML = '';
   getRecentAllUrls();
 }
 
