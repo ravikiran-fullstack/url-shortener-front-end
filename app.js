@@ -35,6 +35,8 @@ async function postLongUrl(postData){
                       body: JSON.stringify(postData)
                     });
     const data = await response.json();
+    await getRecentUrls();
+    await getRecentAllUrls();
     showShortenedUrl(data);
   } catch(err){
     loadingIndicator.classList.add('hidden');
