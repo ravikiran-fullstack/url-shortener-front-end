@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
                       }
                     });
     if(response.status !== 200){  
-      location.assign("https://u-bit.me/login.html");
+     location.assign("https://u-bit.me/login.html");
     }                
     console.log('2');
   }
@@ -108,3 +108,26 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
+
+async function logout(){
+  const token = localStorage.getItem('token');
+  try{
+    const url = 'https://rk-url-shortener-back-end.herokuapp.com/logout';
+    //const url = 'http://localhost:8585/logout';
+    const response = await fetch(url, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }, 
+                      body: JSON.stringify({token: token})
+                    });
+    localStorage.clear();
+    location.assign('https://u-bit.me/login.html');
+  } catch(err){
+    console.log("login error",err);
+  }
+}
+
+function logoutUser(){
+  logout();
+}
