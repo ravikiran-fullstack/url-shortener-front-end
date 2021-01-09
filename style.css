@@ -27,6 +27,16 @@ ul li {
   cursor: pointer;
 }
 
+.forgotPasswordLinkDiv{
+  display: flex; 
+  flex: row;
+  justify-content: flex-end; 
+}
+
+.form-group:nth-child(2){
+  margin-bottom: 0 !important;
+}
+
 .circle::before{
   content: '';
   width: 20px;
