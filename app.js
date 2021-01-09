@@ -87,13 +87,12 @@ async function getRecentUrls(){
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
-    const response = await fetch('http://rk-url-shortener-back-end.herokuapp.com/recent', {
+    const response = await fetch('http://rk-url-shortener-back-end.herokuapp.com/recent/ravikiransjce.code@gmail.com', {
                       method: 'GET',
                       headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({username:'ravikiransjce.code@gmail.com'})
+                      }
                     });
     const data = await response.json();
     console.log(data);
