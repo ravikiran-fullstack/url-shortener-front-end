@@ -134,64 +134,13 @@ function showRecentTable(urlInfo, tableId){
     tr.innerHTML = `<tr>
                       <th scope="row">${index + 1}</th>
                       <td>${element.url}</td>
-                      <td>${element.shortUrl}</td>
+                      <td><a href="https://rk-url-shortener-back-end.herokuapp.com/${element.shortUrl}" target="_blank">${element.shortUrl}</a></td>
                       <td>${element.visitCount}</td>
                     </tr>`;
     const table = document.getElementById(`${tableId}`);
     table.append(tr); 
   });
 }
-
-const urlInfo =[
-    {
-      "createdAt": "2021-01-09T17:05:25.827Z",
-      "shortUrl": "WCny2",
-      "updatedAt": "2021-01-09T17:05:25.827Z",
-      "url": "http://localhost:8585/url",
-      "username": "ravikiransjce.code@gmail.com",
-      "visitCount": 0
-  },
-  {
-    "createdAt": "2021-01-09T17:05:25.827Z",
-    "shortUrl": "WCny2",
-    "updatedAt": "2021-01-09T17:05:25.827Z",
-    "url": "http://localhost:8585/url",
-    "username": "ravikiransjce.code@gmail.com",
-    "visitCount": 0
-  },
-  {
-    "createdAt": "2021-01-09T17:05:25.827Z",
-    "shortUrl": "WCny2",
-    "updatedAt": "2021-01-09T17:05:25.827Z",
-    "url": "http://localhost:8585/url",
-    "username": "ravikiransjce.code@gmail.com",
-    "visitCount": 0
-  },
-  {
-    "createdAt": "2021-01-09T17:05:25.827Z",
-    "shortUrl": "WCny2",
-    "updatedAt": "2021-01-09T17:05:25.827Z",
-    "url": "http://localhost:8585/url",
-    "username": "ravikiransjce.code@gmail.com",
-    "visitCount": 0
-  },
-  {
-    "createdAt": "2021-01-09T17:05:25.827Z",
-    "shortUrl": "WCny2",
-    "updatedAt": "2021-01-09T17:05:25.827Z",
-    "url": "http://localhost:8585/url",
-    "username": "ravikiransjce.code@gmail.com",
-    "visitCount": 0
-  },
-  {
-    "createdAt": "2021-01-09T17:05:25.827Z",
-    "shortUrl": "WCny2",
-    "updatedAt": "2021-01-09T17:05:25.827Z",
-    "url": "http://localhost:8585/url",
-    "username": "ravikiransjce.code@gmail.com",
-    "visitCount": 0
-  }
-]
 
 let input = document.getElementById("longUrl");
 input.addEventListener("keyup", function(event) {
