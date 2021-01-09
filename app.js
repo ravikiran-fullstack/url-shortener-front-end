@@ -86,7 +86,7 @@ function getRecent(){
 async function getRecentUrls(){
   const token = localStorage.getItem('token');
   try{
-    https://rk-url-shortener-back-end.herokuapp.com/recent
+    //https://rk-url-shortener-back-end.herokuapp.com/recent
     const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/recentAll', {
                       method: 'GET',
                       headers: {
