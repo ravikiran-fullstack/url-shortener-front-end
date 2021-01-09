@@ -10,29 +10,27 @@ async function login(loginData){
                         'Content-Type': 'application/json'
                       },
                       body: JSON.stringify(loginData)
-                    }); 
+                    });
+    const status = response.status; 
     console.log('res', response);
    // console.log('cookies', response.cookie);
     const data = await response.json();
-    validateLoginResponse(data);
+    validateLoginResponse(data, status);
   } catch(err){
     console.log("login error",err);
   }
 }
 
-function validateLoginResponse(data){
+function validateLoginResponse(data, status){
   console.log('validateLoginResponse', data);
-
-  if(data.message === "Invalid username or password"){
-   // usernameLogin.focus();  
-   // passwordLogin.focus();
+  if(status === 400){
     usernameLogin.value = '';
     passwordLogin.value = '';
-    
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
-  }else {
+  } else if(status === 200){
     localStorage.setItem('token', data.token);
-    console.log(localStorage);
+    // console.log(localStorage);
+    localStorage.assign('https://u-bit.me/');
   }
 }
 
