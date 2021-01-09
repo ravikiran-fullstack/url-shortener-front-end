@@ -1,5 +1,28 @@
 const usernameLogin = document.getElementById("userEmailLogin");
 const passwordLogin = document.getElementById("userPasswordLogin");
+
+
+window.addEventListener('DOMContentLoaded', async (event) => {
+  const token = localStorage.getItem('token');
+  if(!token){
+    location.assign("https://u-bit.me/login.html");
+  } else {
+    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
+                      method: 'POST',
+                      headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                      }
+                    });
+    if(response.status !== 200){  
+      location.assign("https://u-bit.me/login.html");
+    }else {
+      location.assign("https://u-bit.me/index.html");
+    }
+    
+  }
+});
+
 async function login(loginData){
   try{
     const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
@@ -13,7 +36,6 @@ async function login(loginData){
                     });
     const status = response.status; 
     console.log('res', response);
-   // console.log('cookies', response.cookie);
     const data = await response.json();
     validateLoginResponse(data, status);
   } catch(err){
@@ -29,7 +51,6 @@ function validateLoginResponse(data, status){
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
   } else if(status === 200){
     localStorage.setItem('token', data.token);
-    // console.log(localStorage);
     location.assign('https://u-bit.me/');
   }
 }
