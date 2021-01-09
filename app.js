@@ -135,7 +135,8 @@ function showRecentTable(urlInfo, tableId){
                       <td>${element.shortUrl}</td>
                       <td>${element.visitCount}</td>
                     </tr>`;
-    document.getElementById(`'${tableId}'`).append(tr); 
+    const table = document.getElementById(`${tableId}`);
+    table.append(tr); 
   });
 }
 
