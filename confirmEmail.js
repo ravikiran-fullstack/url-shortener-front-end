@@ -3,7 +3,7 @@ const userEmailReset = document.getElementById('userEmailReset');
 async function resetPasswordStep1(resetEmailData){
   try{
     const url = 'https://rk-url-shortener-back-end.herokuapp.com/confirmEmailResetPassword';
-    // const url = 'http://localhost:8585/confirmEmailResetPassword';
+    //const url = 'http://localhost:8585/confirmEmailResetPassword';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
@@ -11,6 +11,7 @@ async function resetPasswordStep1(resetEmailData){
                       },
                       body: JSON.stringify(resetEmailData)
                     });
+    console.log(response);
     const data = await response.json();
     validateResetPasswordResponse(data);
   } catch(err){

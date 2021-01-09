@@ -3,16 +3,16 @@ const passwordLogin = document.getElementById("userPasswordLogin");
 async function login(loginData){
   try{
     const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
-    // const url = 'http://localhost:8585/login';
+    //const url = 'http://localhost:8585/login';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json'
                       },
                       body: JSON.stringify(loginData)
-                    });
+                    }); 
     console.log('res', response);
-    console.log('cookies', document.cookie);
+   // console.log('cookies', response.cookie);
     const data = await response.json();
     validateLoginResponse(data);
   } catch(err){
