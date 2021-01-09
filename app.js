@@ -46,7 +46,7 @@ function showShortenedUrl(data){
   loadingIndicator.classList.add('hidden');
   shortenedUrlResult.classList.remove('hidden');
   // console.log(`href ${data.shortenedUrl}`);
-  const targetUrl = `https://${data.shortenedUrl}`;
+  const targetUrl = `${data.shortenedUrl}`;
   document.getElementById('shortenedUrl').href = targetUrl;
   document.getElementById('shortenedUrl').innerHTML = `${data.shortenedUrl}`;
   document.getElementById('originalUrl').innerHTML = data.originalUrl;
