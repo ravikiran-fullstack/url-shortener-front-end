@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', async (event) => {
   const token = localStorage.getItem('token');
   if(!token){
-    location.assign("https://u-bit.me/login.html");
+    //location.assign("https://u-bit.me/login.html");
     console.log('1');
   } else {
     const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
                       }
                     });
     if(response.status !== 200){  
-     location.assign("https://u-bit.me/login.html");
+      //location.assign("https://u-bit.me/login.html");
     }                
     console.log('2');
   }
@@ -86,8 +86,8 @@ function getRecent(){
 async function getRecentUrls(){
   const token = localStorage.getItem('token');
   try{
-    //https://rk-url-shortener-back-end.herokuapp.com/recent
-    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/recent/ravikiransjce.code@gmail.com', {
+    https://rk-url-shortener-back-end.herokuapp.com/recent
+    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/recentAll', {
                       method: 'GET',
                       headers: {
                         'Authorization': `Bearer ${token}`,
@@ -96,10 +96,76 @@ async function getRecentUrls(){
                     });
     const data = await response.json();
     console.log(data);
+    showRecentTable(data);
   } catch(err){
     console.error(err);
   }
 }
+
+function showRecentTable(urlInfo){
+  console.log(urlInfo);
+  urlInfo.forEach((element, index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<tr>
+                      <th scope="row">${index + 1}</th>
+                      <td>${element.url}</td>
+                      <td>${element.shortUrl}</td>
+                      <td>${element.visitCount}</td>
+                    </tr>`;
+    document.getElementById('recentTableBody').append(tr); 
+  });
+}
+
+const urlInfo =[
+    {
+      "createdAt": "2021-01-09T17:05:25.827Z",
+      "shortUrl": "WCny2",
+      "updatedAt": "2021-01-09T17:05:25.827Z",
+      "url": "http://localhost:8585/url",
+      "username": "ravikiransjce.code@gmail.com",
+      "visitCount": 0
+  },
+  {
+    "createdAt": "2021-01-09T17:05:25.827Z",
+    "shortUrl": "WCny2",
+    "updatedAt": "2021-01-09T17:05:25.827Z",
+    "url": "http://localhost:8585/url",
+    "username": "ravikiransjce.code@gmail.com",
+    "visitCount": 0
+  },
+  {
+    "createdAt": "2021-01-09T17:05:25.827Z",
+    "shortUrl": "WCny2",
+    "updatedAt": "2021-01-09T17:05:25.827Z",
+    "url": "http://localhost:8585/url",
+    "username": "ravikiransjce.code@gmail.com",
+    "visitCount": 0
+  },
+  {
+    "createdAt": "2021-01-09T17:05:25.827Z",
+    "shortUrl": "WCny2",
+    "updatedAt": "2021-01-09T17:05:25.827Z",
+    "url": "http://localhost:8585/url",
+    "username": "ravikiransjce.code@gmail.com",
+    "visitCount": 0
+  },
+  {
+    "createdAt": "2021-01-09T17:05:25.827Z",
+    "shortUrl": "WCny2",
+    "updatedAt": "2021-01-09T17:05:25.827Z",
+    "url": "http://localhost:8585/url",
+    "username": "ravikiransjce.code@gmail.com",
+    "visitCount": 0
+  },
+  {
+    "createdAt": "2021-01-09T17:05:25.827Z",
+    "shortUrl": "WCny2",
+    "updatedAt": "2021-01-09T17:05:25.827Z",
+    "url": "http://localhost:8585/url",
+    "username": "ravikiransjce.code@gmail.com",
+    "visitCount": 0
+  }
+]
 
 let input = document.getElementById("longUrl");
 input.addEventListener("keyup", function(event) {
