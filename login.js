@@ -2,8 +2,8 @@ const usernameLogin = document.getElementById("userEmailLogin");
 const passwordLogin = document.getElementById("userPasswordLogin");
 async function login(loginData){
   try{
-    const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
-    //const url = 'http://localhost:8585/login';
+    //const url = 'https://rk-url-shortener-back-end.herokuapp.com/login';
+    const url = 'http://localhost:8585/login';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
@@ -31,7 +31,7 @@ function validateLoginResponse(data){
     
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
   }else {
-    localStorage.setItem('token', data.accessToken);
+    localStorage.setItem('token', data.token);
     console.log(localStorage);
   }
 }

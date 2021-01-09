@@ -7,10 +7,13 @@ const loadingIndicator = document.getElementById('loadingIndicator');
 const shortenedUrlResult = document.getElementById('shortenedUrlResult');
 
 async function postLongUrl(postData){  
+  const token = localStorage.getItem('token');
   try{
+    //https://rk-url-shortener-back-end.herokuapp.com/url
     const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
                       method: 'POST',
                       headers: {
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                       },
                       body: JSON.stringify(postData)
@@ -61,16 +64,22 @@ function isUrlValid(str) {
       return true;
 }
 
+function getRecent(){
+  getRecentUrls();
+}
+
 async function getRecentUrls(){
+  const token = localStorage.getItem('token');
   try{
-    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/url', {
+    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/recent', {
                       method: 'GET',
                       headers: {
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify(data)
+                      }
                     });
     const data = await response.json();
+    console.log(data);
   } catch(err){
     console.error(err);
   }
