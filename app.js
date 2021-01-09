@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', async (event) => {
   const token = localStorage.getItem('token');
   if(!token){
-    //location.assign("https://u-bit.me/login.html");
+    location.assign("https://u-bit.me/login.html");
     console.log('1');
   } else {
     const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
@@ -12,9 +12,10 @@ window.addEventListener('DOMContentLoaded', async (event) => {
                       }
                     });
     if(response.status !== 200){  
-      //location.assign("https://u-bit.me/login.html");
+      location.assign("https://u-bit.me/login.html");
     }                
-    console.log('2');
+    await getRecentUrls();
+    await getRecentAllUrls();
   }
 });
 
@@ -83,7 +84,30 @@ function getRecent(){
   getRecentUrls();
 }
 
+function getRecentAll(){
+  getRecentAllUrls();
+}
+
 async function getRecentUrls(){
+  const token = localStorage.getItem('token');
+  try{
+    //https://rk-url-shortener-back-end.herokuapp.com/recent
+    const username = 'ravikiransjce.code@gmail.com';
+    const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recent/${username}`, {
+                      method: 'GET',
+                      headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                      }
+                    });
+    const data = await response.json();
+    showRecentTable(data, 'recentTableBody');
+  } catch(err){
+    console.error(err);
+  }
+}
+
+async function getRecentAllUrls(){
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
@@ -95,14 +119,13 @@ async function getRecentUrls(){
                       }
                     });
     const data = await response.json();
-    console.log(data);
-    showRecentTable(data);
+    showRecentTable(data, 'recentAllTableBody');
   } catch(err){
     console.error(err);
   }
 }
 
-function showRecentTable(urlInfo){
+function showRecentTable(urlInfo, tableId){
   console.log(urlInfo);
   urlInfo.forEach((element, index) => {
     const tr = document.createElement('tr');
@@ -112,7 +135,7 @@ function showRecentTable(urlInfo){
                       <td>${element.shortUrl}</td>
                       <td>${element.visitCount}</td>
                     </tr>`;
-    document.getElementById('recentTableBody').append(tr); 
+    document.getElementById(`'${tableId}'`).append(tr); 
   });
 }
 
