@@ -1,7 +1,9 @@
-// fetch('http://localhost:8585/recent')
-//   .then(result => result.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.error(err));
+window.addEventListener('DOMContentLoaded', (event) => {
+  const token = localStorage.getItem('token');
+  if(!token){
+    location.assign("https://u-bit.me/login.html");
+  }
+});
 
 const loadingIndicator = document.getElementById('loadingIndicator');
 const shortenedUrlResult = document.getElementById('shortenedUrlResult');
