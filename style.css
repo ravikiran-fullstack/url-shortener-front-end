@@ -23,6 +23,10 @@ body{
   align-items: center;
 }
 
+ul li {
+  cursor: pointer;
+}
+
 .circle::before{
   content: '';
   width: 20px;
