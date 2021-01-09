@@ -83,16 +83,16 @@ function isUrlValid(str) {
 }
 
 function getRecent(){
-  document.getElementById('recentTableBody').innerHTML = '';
   getRecentUrls();
 }
 
 function getRecentAll(){
-  document.getElementById('recentAllTableBody').innerHTML = '';
+  
   getRecentAllUrls();
 }
 
 async function getRecentUrls(){
+  document.getElementById('recentTableBody').innerHTML = '';
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
@@ -112,6 +112,7 @@ async function getRecentUrls(){
 }
 
 async function getRecentAllUrls(){
+  document.getElementById('recentAllTableBody').innerHTML = '';
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
