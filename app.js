@@ -96,6 +96,7 @@ async function getRecentUrls(){
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
+    document.getElementById('getRecentBtn').classList.add('hidden');
     const username = 'ravikiransjce.code@gmail.com';
     const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recet/${username}`, {
                       method: 'GET',
@@ -114,6 +115,7 @@ async function getRecentUrls(){
 
 async function getRecentAllUrls(){
   document.getElementById('recentAllTableBody').innerHTML = '';
+  document.getElementById('getRecentAllBtn').classList.remove('hidden');
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
