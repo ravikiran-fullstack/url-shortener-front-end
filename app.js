@@ -108,7 +108,7 @@ async function getRecentUrls(){
     const data = await response.json();
     showRecentTable(data, 'recentTableBody');
   } catch(err){
-    document.getElementById('getRecentBtn').classList.remove('hidden');
+    // document.getElementById('getRecentBtn').classList.remove('hidden');
     document.getElementById('recentTableBody').innerHTML = `<tr>
                                                                 <th>Please retry to fetch shortened urls</th>
                                                                 <th><button class="btn btn-primary float-right hidden" id="getRecentBtn" onclick="getRecent()">Retry</button></th>
@@ -133,7 +133,7 @@ async function getRecentAllUrls(){
     const data = await response.json();
     showRecentTable(data, 'recentAllTableBody');
   } catch(err){
-    document.getElementById('getRecentAllBtn').classList.remove('hidden');
+    // document.getElementById('getRecentAllBtn').classList.remove('hidden');
     document.getElementById('recentAllTableBody').innerHTML = `<tr>
                                                                     <th>Please retry to fetch shortened urls</th>
                                                                     <th><button class="btn btn-primary float-right hidden" id="getRecentAllBtn" onclick="getRecentAll()">Retry</button></th>
