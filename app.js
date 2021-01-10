@@ -109,7 +109,7 @@ async function getRecentUrls(){
     showRecentTable(data, 'recentTableBody');
   } catch(err){
     document.getElementById('getRecentBtn').classList.remove('hidden');
-    document.getElementById('recentTableBody').innerHTML = '<div class="text-center"><h6>Please try again</h6></div>';
+    document.getElementById('recentTableBody').innerHTML = `<tr><th>Please retry to fetch shortened urls</th></tr>`;
     console.error(err);
   }
 }
