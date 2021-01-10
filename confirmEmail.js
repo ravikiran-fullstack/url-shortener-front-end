@@ -23,9 +23,11 @@ function validateResetPasswordResponse(data){
   console.log('validateResetPasswordResponse',data);
   if(data.message === "User doesn't  exists"){
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
+    document.getElementById('invalidCredentialsHelp').classList.add('failure');
     document.getElementById('invalidCredentialsHelp').innerHTML = "User doesn't exists, please check user email again";
   } else {
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
+    document.getElementById('invalidCredentialsHelp').classList.add('success');
     document.getElementById('invalidCredentialsHelp').innerHTML = "Check your email for reset options";
   }
 }
@@ -46,3 +48,7 @@ document.getElementById('userEmailReset').addEventListener('click', () => {
   document.getElementById('invalidCredentialsHelp').classList.add('hidden');
   document.getElementById('invalidCredentialsHelp').innerHTML = "";
 })
+
+function navigateToLogin(){
+  location.assign('/login.html');
+}

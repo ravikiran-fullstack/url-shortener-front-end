@@ -9,12 +9,12 @@
   <title>Enter Email</title>
 </head>
 
-<body>
-  <div class="container mt-5">
+<body class="bg-dark">
+  <div class="container mt-2">
     <div class="row">
       <div class="offset-md-4 col-md-4">
-        <h4>Confirm Email: Step-1</h4>
-        <form onsubmit="enterUserEmail()">
+        <!-- <h4>Confirm Email: Step-1</h4> -->
+        <!-- <form onsubmit="enterUserEmail()">
           <div class="form-group">
             <input type="email" class="form-control" id="userEmailReset" aria-describedby="emailHelp"
               placeholder="Enter your email" required>
@@ -26,8 +26,40 @@
           <div style="display: flex;justify-content: center;">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-        </form>
+        </form> -->
       </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 p-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 border pb-2 bg-light">
+            <div class="forgot">
+                <h2>Forgot your password?</h2>
+                <p>Change your password in three easy steps. This will help you to secure your password!</p>
+                <ol class="list-unstyled">
+                    <li><span class="text-primary text-medium">1. </span>Enter your email address below.</li>
+                    <li><span class="text-primary text-medium">2. </span>Our system will send you a temporary link</li>
+                    <li><span class="text-primary text-medium">3. </span>Use the link to reset your password</li>
+                </ol>
+            </div>
+            <form class="card mt-4 " onsubmit="enterUserEmail()">
+                <div class="card-body">
+                    <div class="form-group"> 
+                      <label for="userEmailReset">Enter your email address</label> 
+                      <input class="form-control" type="text" id="userEmailReset" required="">
+                      <small class="form-text text-muted">Enter the email address you used during the registration on u-bit.me Then we'll email a link to this address.</small>
+                    </div>
+                    <div id="invalidCredentialsHelp" style="display: flex;justify-content: center;" class="">
+                      <small id="message" class="form-text t ext-danger"></small>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-center"> 
+                  <button class="btn btn-success mr-5" type="submit">Get New Password</button> 
+                  <button class="btn btn-danger" type="button" onclick="navigateToLogin()">Back to Login</button>
+                </div>
+            </form>
+        </div>
     </div>
   </div>
   <script src="confirmEmail.js"></script>
