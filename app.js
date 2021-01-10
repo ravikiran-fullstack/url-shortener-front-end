@@ -109,6 +109,7 @@ async function getRecentUrls(){
     showRecentTable(data, 'recentTableBody');
   } catch(err){
     document.getElementById('getRecentBtn').classList.remove('hidden');
+    document.getElementById('recentTableBody').innerHTML = '<div class="text-center"><h6>Please try again</h6></div>';
     console.error(err);
   }
 }
@@ -130,6 +131,7 @@ async function getRecentAllUrls(){
     showRecentTable(data, 'recentAllTableBody');
   } catch(err){
     document.getElementById('getRecentAllBtn').classList.remove('hidden');
+    document.getElementById('recentAllTableBody').innerHTML = '<div class="text-center"><h6>Please try again</h6></div>';
     console.error(err);
   }
 }
