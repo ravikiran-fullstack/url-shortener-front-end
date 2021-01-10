@@ -98,7 +98,7 @@ async function getRecentUrls(){
     //https://rk-url-shortener-back-end.herokuapp.com/recent
     // document.getElementById('getRecentBtn').classList.add('hidden');
     const username = 'ravikiransjce.code@gmail.com';
-    const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recet/${username}`, {
+    const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recent/${username}`, {
                       method: 'GET',
                       headers: {
                         'Authorization': `Bearer ${token}`,
