@@ -101,3 +101,17 @@ ul li {
   display: none !important;
 }
 
+.tableHeading {
+  background: rebeccapurple;
+  color: wheat;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.customTableStyle{
+  border: 1rem solid #eaeaea;
+  cursor: pointer;
+  border-collapse: unset;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
