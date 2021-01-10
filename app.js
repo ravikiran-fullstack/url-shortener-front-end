@@ -115,7 +115,7 @@ async function getRecentUrls(){
 
 async function getRecentAllUrls(){
   document.getElementById('recentAllTableBody').innerHTML = '';
-  document.getElementById('getRecentAllBtn').classList.remove('hidden');
+  document.getElementById('getRecentAllBtn').classList.add('hidden');
   const token = localStorage.getItem('token');
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
