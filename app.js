@@ -131,7 +131,7 @@ async function getRecentAllUrls(){
     showRecentTable(data, 'recentAllTableBody');
   } catch(err){
     document.getElementById('getRecentAllBtn').classList.remove('hidden');
-    document.getElementById('recentAllTableBody').innerHTML = '<div class="text-center"><h6>Please try again</h6></div>';
+    document.getElementById('recentAllTableBody').innerHTML = `<tr><th>Please retry to fetch shortened urls</th></tr>`;
     console.error(err);
   }
 }
