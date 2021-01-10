@@ -97,7 +97,7 @@ async function getRecentUrls(){
   try{
     //https://rk-url-shortener-back-end.herokuapp.com/recent
     const username = 'ravikiransjce.code@gmail.com';
-    const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recent/${username}`, {
+    const response = await fetch(`https://rk-url-shortener-back-end.herokuapp.com/recet/${username}`, {
                       method: 'GET',
                       headers: {
                         'Authorization': `Bearer ${token}`,
@@ -107,6 +107,7 @@ async function getRecentUrls(){
     const data = await response.json();
     showRecentTable(data, 'recentTableBody');
   } catch(err){
+    document.getElementById('getRecentBtn').classList.remove('hidden');
     console.error(err);
   }
 }
@@ -126,6 +127,7 @@ async function getRecentAllUrls(){
     const data = await response.json();
     showRecentTable(data, 'recentAllTableBody');
   } catch(err){
+    document.getElementById('getRecentAllBtn').classList.remove('hidden');
     console.error(err);
   }
 }
