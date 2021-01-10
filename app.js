@@ -112,6 +112,7 @@ async function getRecentUrls(){
     document.getElementById('recentTableBody').innerHTML = `<tr>
                                                                 <th colspan="2">Please retry to fetch shortened urls</th>
                                                                 <th style="text-align:center;" colspan="2"><button class="btn btn-primary float-right" id="getRecentBtn" onclick="getRecent()">Retry</button></th>
+                                                                <th></th>
                                                             </tr>`;
     console.error(err);
   }
@@ -137,6 +138,7 @@ async function getRecentAllUrls(){
     document.getElementById('recentAllTableBody').innerHTML = `<tr>
                                                                     <th colspan="2">Please retry to fetch shortened urls</th>
                                                                     <th style="text-align:center;" colspan="2"><button class="btn btn-primary float-right" id="getRecentAllBtn" onclick="getRecentAll()">Retry</button></th>
+                                                                    <th></th>
                                                                 </tr>`;
     console.error(err);
   }
