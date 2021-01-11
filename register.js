@@ -23,6 +23,10 @@ function validateRegistrationResponse(data){
       document.getElementById('registrationMessage').innerHTML = 'Email Sent Successfully, please verify it before login';
       location.assign("https://u-bit.me/login.html");
     }, 3000);
+  } else if(data.message === 'Username already exists'){
+    document.getElementById('registrationMessage').innerHTML = 'User already exists, please try logging in';
+  } else {
+    document.getElementById('registrationMessage').innerHTML = 'Unknown error, please try again';
   }
 }
 
