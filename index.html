@@ -8,9 +8,33 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <title>URL Shortener</title>
+  <script type="text/javascript">
+    async function authPage(){
+      const token = localStorage.getItem('token');
+        if(!token){
+          location.assign("https://u-bit.me/login.html");
+
+          console.log('1');
+        } else {
+          const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
+                            method: 'POST',
+                            headers: {
+                              'Authorization': `Bearer ${token}`,
+                              'Content-Type': 'application/json'
+                            }
+                          });
+          if(response.status !== 200){  
+            location.assign("https://u-bit.me/login.html");
+            console.log(2);
+          }                
+      }
+    }
+    authPage();
+  </script>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
       <a class="navbar-brand" href="#">U-BIT</a>

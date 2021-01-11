@@ -3,19 +3,19 @@ const passwordLogin = document.getElementById("userPasswordLogin");
 
 
 window.addEventListener('DOMContentLoaded', async (event) => {
-  const token = localStorage.getItem('token');
-  if(token){
-    const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
-                      method: 'POST',
-                      headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                      }
-                    });
-    if(response.status === 200){  
-      location.assign("https://u-bit.me/index.html");
-    }
-  }
+  // const token = localStorage.getItem('token');
+  // if(token){
+  //   const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
+  //                     method: 'POST',
+  //                     headers: {
+  //                       'Authorization': `Bearer ${token}`,
+  //                       'Content-Type': 'application/json'
+  //                     }
+  //                   });
+  //   if(response.status === 200){  
+  //     location.assign("https://u-bit.me/index.html");
+  //   }
+  // }
 });
 
 async function login(loginData){

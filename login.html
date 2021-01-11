@@ -6,6 +6,24 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
+    <script type="text/javascript">
+      async function authPage(){
+        const token = localStorage.getItem('token');
+        if(token){
+          const response = await fetch('https://rk-url-shortener-back-end.herokuapp.com/authenticateSession', {
+                            method: 'POST',
+                            headers: {
+                              'Authorization': `Bearer ${token}`,
+                              'Content-Type': 'application/json'
+                            }
+                          });
+          if(response.status === 200){  
+            location.assign("https://u-bit.me/index.html");
+          }
+        }
+      }
+      authPage();
+    </script>
   </head>
   <body class="bg-dark">
     <div class="container mt-5">
