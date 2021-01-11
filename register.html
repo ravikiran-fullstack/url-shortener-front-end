@@ -9,11 +9,11 @@
   <title>Register New User</title>
 </head>
 
-<body>
+<body class="bg-dark">
 
   <div class="container mt-5">
     <div class="row">
-      <div class="offset-md-4 col-md-4">
+      <div class="offset-md-4 col-md-4 bg-light p-5 rounded">
         <h1>Registration</h1>
         <form onsubmit="registerUser()">
           <div class="form-group">
@@ -28,6 +28,9 @@
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="agreeTerms" required>
             <label class="form-check-label" for="agreeTerms">Agree to Our terms</label>
+          </div>
+          <div style="display: flex;justify-content: center;">
+            <p id="registrationMessage" class="form-text text-danger hidden"></p>
           </div>
           <div style="display: flex;justify-content: center;">
             <button type="submit" class="btn btn-primary">Register</button>

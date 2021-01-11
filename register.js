@@ -1,7 +1,7 @@
 async function register(registrationData){
   try{
-    //const url = 'https://rk-url-shortener-back-end.herokuapp.com/register';//
-    const url = 'http://localhost:8585/register';
+    const url = 'https://rk-url-shortener-back-end.herokuapp.com/register';//
+    //const url = 'http://localhost:8585/register';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
@@ -18,7 +18,12 @@ async function register(registrationData){
 
 function validateRegistrationResponse(data){
   console.log('validateRegistrationResponse', data);
-  
+  if(data.message === 'Verification Email Sent Successfully'){
+    setTimeout(() => {
+      document.getElementById('registrationMessage').innerHTML = 'Email Sent Successfully, please verify it before login';
+      location.assign("https://u-bit.me/login.html");
+    }, 3000);
+  }
 }
 
 function registerUser() {
