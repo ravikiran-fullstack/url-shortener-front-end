@@ -19,8 +19,8 @@ async function register(registrationData){
 function validateRegistrationResponse(data){
   console.log('validateRegistrationResponse', data);
   if(data.message === 'Verification Email Sent Successfully'){
+    document.getElementById('registrationMessage').innerHTML = 'Email Sent Successfully, please verify it before login';
     setTimeout(() => {
-      document.getElementById('registrationMessage').innerHTML = 'Email Sent Successfully, please verify it before login';
       location.assign("https://u-bit.me/login.html");
     }, 3000);
   } else if(data.message === 'Username already exists'){
