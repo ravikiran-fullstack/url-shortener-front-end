@@ -44,6 +44,7 @@ function validateLoginResponse(data, status){
     usernameLogin.value = '';
     passwordLogin.value = '';
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
+    document.getElementById('invalidCredentialsHelp').innerHTML = data.message;
   } else if(status === 200){
     localStorage.setItem('token', data.token);
     location.assign('https://u-bit.me/');
