@@ -1,7 +1,7 @@
 async function register(registrationData){
   try{
-    const url = 'https://rk-url-shortener-back-end.herokuapp.com/register';//
-    // const url = 'http://localhost:8585/register';
+    //const url = 'https://rk-url-shortener-back-end.herokuapp.com/register';//
+    const url = 'http://localhost:8585/register';
     const response = await fetch(url, {
                       method: 'POST',
                       headers: {
