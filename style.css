@@ -124,3 +124,7 @@ ul li {
 .success{
   color: green;
 }
+
+h1 a{
+  font-size: 2rem;
+}
