@@ -21,6 +21,7 @@ async function resetPasswordStep1(resetEmailData){
 
 function validateResetPasswordResponse(data){
   console.log('validateResetPasswordResponse',data);
+  loadingIndicator.classList.add('hidden');
   if(data.message === "User doesn't  exists"){
     document.getElementById('invalidCredentialsHelp').classList.remove('hidden');
     document.getElementById('invalidCredentialsHelp').classList.add('failure');
@@ -33,6 +34,7 @@ function validateResetPasswordResponse(data){
 }
 
 function enterUserEmail(){
+  loadingIndicator.classList.remove('hidden');
   console.log(userEmailReset.value);
   document.getElementById('invalidCredentialsHelp').classList.add('hidden');
   document.getElementById('invalidCredentialsHelp').innerHTML = "";

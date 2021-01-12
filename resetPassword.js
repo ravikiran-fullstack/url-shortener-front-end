@@ -38,11 +38,13 @@ async function resetPasswordStep2(resetPasswordData){
 }
 
 function validateResetPasswordResponse(data){
+  loadingIndicator.classList.add('hidden');
   console.log('validateResetPasswordResponse', data);
 }
 
 
 function resetUserPassword(){
+  loadingIndicator.classList.remove('hidden');
   if(resetPassword.value !== confirmPassword.value){
     document.getElementById('passwordMisMatch').classList.remove('hidden');
     document.getElementById('message').innerHTML = "Passwords do not match";
