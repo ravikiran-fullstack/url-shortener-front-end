@@ -18,6 +18,7 @@ async function register(registrationData){
 
 function validateRegistrationResponse(data){
   console.log('validateRegistrationResponse', data);
+  loadingIndicator.classList.add('hidden');
   if(data.message === 'Verification Email Sent Successfully'){
     document.getElementById('registrationMessage').innerHTML = 'Email Sent Successfully, please verify it before login';
     setTimeout(() => {
@@ -31,6 +32,7 @@ function validateRegistrationResponse(data){
 }
 
 function registerUser() {
+  loadingIndicator.classList.remove('hidden');
   const username = document.getElementById("userEmailRegister").value;
   const password = document.getElementById("userPasswordRegister").value;
   const registrationData = {

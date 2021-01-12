@@ -40,6 +40,7 @@ async function login(loginData){
 
 function validateLoginResponse(data, status){
   console.log('validateLoginResponse', data);
+  loadingIndicator.classList.add('hidden');
   if(status === 400){
     usernameLogin.value = '';
     passwordLogin.value = '';
@@ -52,6 +53,7 @@ function validateLoginResponse(data, status){
 }
 
 function loginUser() {
+  loadingIndicator.classList.remove('hidden');
   const username = usernameLogin.value;
   const password = passwordLogin.value;
   // location.replace('/register.html');
